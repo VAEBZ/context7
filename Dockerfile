@@ -25,7 +25,8 @@ COPY package.json ./
 # Install only production dependencies
 RUN npm install --production --ignore-scripts
 
-# Expose no ports (stdio only)
+# Expose HTTP port
+EXPOSE 9700
 
-# Default command
-CMD ["node", "dist/index.js"]
+# Default command: run in HTTP mode
+CMD ["node", "dist/index.js", "--transport", "http", "--host", "0.0.0.0", "--port", "9700"]

@@ -36,6 +36,8 @@ export async function fetchLibraryDocumentation(
     tokens?: number;
     topic?: string;
     folders?: string;
+    lang?: string;
+    python?: string;
   } = {}
 ): Promise<string | null> {
   try {
@@ -46,6 +48,8 @@ export async function fetchLibraryDocumentation(
     if (options.tokens) url.searchParams.set("tokens", options.tokens.toString());
     if (options.topic) url.searchParams.set("topic", options.topic);
     if (options.folders) url.searchParams.set("folders", options.folders);
+    if (options.lang) url.searchParams.set("lang", options.lang);
+    if (options.python) url.searchParams.set("python", options.python);
     url.searchParams.set("type", DEFAULT_TYPE);
     const response = await fetch(url, {
       headers: {
